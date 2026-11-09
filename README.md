@@ -1,18 +1,20 @@
 # Central de Consultas Brasil
 
-Aplicação web responsiva que reúne consultas úteis em uma única página. O projeto foi desenvolvido com HTML, CSS e JavaScript, sem framework obrigatório, e integra diferentes serviços externos diretamente pelo navegador.
+Aplicação web demonstrativa que reúne consultas úteis sobre **CEP, clima, CNPJ, veículos pela Tabela FIPE, feriados nacionais e bancos** em uma única interface responsiva.
+
+O projeto foi desenvolvido com HTML, CSS e JavaScript puro e consome serviços públicos diretamente pelo navegador.
 
 ## Funcionalidades
 
-- Consulta de CEP e busca de endereços.
-- Previsão do tempo para cidades brasileiras.
-- Consulta de dados públicos de CNPJ.
-- Consulta da Tabela FIPE por categoria, marca, modelo e ano.
-- Busca de unidades de saúde por estado e município.
-- Filtros de saúde por tipo de atendimento, funcionamento, nome ou bairro.
-- Rotas, telefone, cópia de endereço e verificação no CNES quando disponíveis.
-- Consulta de feriados nacionais, calendário, impressão e exportação.
-- Consulta de bancos pelo código ou nome.
+- Consulta de endereço por CEP.
+- Busca de possíveis CEPs por UF, cidade e logradouro.
+- Consulta das condições atuais do clima e da previsão para sete dias.
+- Consulta de dados cadastrais públicos de CNPJ.
+- Pesquisa de veículos e preços de referência pela Tabela FIPE.
+- Consulta de feriados nacionais com calendário anual.
+- Exportação de feriados nos formatos CSV e ICS.
+- Impressão da relação de feriados.
+- Consulta de instituições bancárias por código ou nome.
 - Interface responsiva para computador, celular e tablet.
 
 ## Tecnologias utilizadas
@@ -20,62 +22,50 @@ Aplicação web responsiva que reúne consultas úteis em uma única página. O 
 - HTML5
 - CSS3
 - JavaScript
-- LocalStorage para salvar configurações no navegador
-- APIs e serviços externos
+- Fetch API
+- APIs externas públicas
 
-## Serviços integrados
+## Serviços externos
 
-O projeto utiliza serviços externos para realizar as consultas:
+O projeto utiliza os seguintes serviços:
 
-- ViaCEP
-- Open-Meteo
-- BrasilAPI
-- FIPE API
-- Geoapify Places API
-- IBGE
-- CNES / DATASUS como fonte oficial complementar
+- [ViaCEP](https://viacep.com.br/) para consultas de CEP e endereço.
+- [Open-Meteo](https://open-meteo.com/) para geocodificação e previsão do tempo.
+- [BrasilAPI](https://brasilapi.com.br/) para consultas de CNPJ, feriados e bancos.
+- [FIPE API](https://fipe.api.br/) para consultas de veículos e valores de referência.
 
-A disponibilidade, os limites e a atualização dos resultados dependem dos serviços externos utilizados.
+A disponibilidade, o formato e a atualização dos dados dependem desses serviços externos.
 
-## Estrutura principal
+## Estrutura básica do projeto
 
 ```text
-index.html
-README.md
-manifest.json       # quando configurado como PWA
-service-worker.js   # quando configurado como PWA
-icons/              # ícones do aplicativo, quando disponíveis
+.
+├── index.html
+├── icon.ico
+├── manifest.json
+└── service-worker.js
 ```
 
-Os arquivos adicionais de PWA são opcionais, mas necessários para uma experiência instalável completa.
+> `manifest.json` e `service-worker.js` são necessários para oferecer os recursos completos de uma PWA. Caso ainda não existam no projeto, será preciso criá-los e vinculá-los ao `index.html`.
 
 ## Como executar
 
-### Execução simples
+### Execução local simples
 
 1. Baixe ou clone os arquivos do projeto.
-2. Abra o arquivo `index.html` em um navegador moderno.
-3. Para evitar limitações de segurança do navegador, prefira executar o projeto por um servidor local ou publicá-lo em HTTPS.
+2. Mantenha os arquivos na mesma pasta.
+3. Inicie um servidor HTTP local.
+4. Abra o endereço fornecido pelo servidor no navegador.
 
-### Publicação
+Exemplo com Python:
 
-O projeto pode ser publicado em serviços de hospedagem de sites estáticos. Ao publicar, preserve os caminhos dos arquivos utilizados pelo `index.html`.
+```bash
+python -m http.server 8000
+```
 
-## Configuração da busca de saúde
+Depois, acesse `http://localhost:8000` no navegador.
 
-A seção de saúde utiliza a Geoapify Places API.
-
-1. Acesse o portal MyProjects da Geoapify.
-2. Crie uma conta gratuita ou entre em sua conta.
-3. Crie um projeto.
-4. Abra a seção **API Keys**.
-5. Copie a chave gerada.
-6. Na seção **Saúde** da aplicação, cole a chave no campo correspondente.
-7. Clique em **Salvar chave**.
-
-A chave é armazenada no navegador utilizado. Antes de publicar o projeto, configure as restrições permitidas pelo provedor da API e não distribua uma chave privada diretamente no código-fonte.
-
-Os resultados de saúde são informativos. Confirme telefone, horário, serviços e atendimento pelo SUS diretamente com a unidade ou pela consulta oficial do CNES antes de se deslocar.
+> Abrir o `index.html` diretamente pode permitir a visualização da página, mas não garante o funcionamento completo de recursos de PWA, service worker ou de integrações sujeitas às políticas de segurança do navegador.
 
 ## Instalação no computador
 
@@ -107,13 +97,7 @@ O ícone será adicionado à tela inicial do dispositivo.
 - O projeto deve ser publicado em HTTPS para utilizar os recursos completos de instalação e service worker.
 - O funcionamento offline depende da configuração do `service-worker.js` e dos arquivos adicionados ao cache.
 - Atualizações no projeto podem exigir a atualização da versão do cache do service worker.
-
-## Privacidade e segurança
-
-- As consultas dependem de serviços externos.
-- A chave da Geoapify é salva localmente no navegador quando o usuário utiliza essa opção.
-- Não inclua dados sensíveis ou credenciais privadas diretamente no repositório.
-- Confirme os dados importantes nas fontes oficiais correspondentes.
+- O código fornecido em `index.html` não apresenta, por si só, a referência a um manifesto nem o registro de um service worker. Esses componentes devem ser adicionados para habilitar a instalação completa como PWA.
 
 ## Licença
 
