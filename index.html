@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Central de consultas de CEP, clima, CNPJ, FIPE, feriados e bancos.">
+<meta name="description" content="Central de consultas de CEP, clima, CNPJ, FIPE, feriados, bancos, DDD, ISBN, câmbio, taxas e PIX.">
 <title>Central de Consultas Brasil</title>
 <link rel="icon" href="icon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="icon.ico" type="image/x-icon">
@@ -12,9 +12,9 @@
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand"><div class="logo">CB</div><div><h1>Central de Consultas Brasil</h1><p>Informações úteis em uma única página</p></div></div><div class="intro"><h2>Consulte. Confira. Resolva.</h2><p>CEP, clima, CNPJ, Tabela FIPE, feriados nacionais e bancos usando serviços públicos acessíveis diretamente pelo navegador.</p></div></div></header>
+<header class="top"><div class="wrap"><div class="brand"><div class="logo">CB</div><div><h1>Central de Consultas Brasil</h1><p>Informações úteis em uma única página</p></div></div><div class="intro"><h2>Consulte. Confira. Resolva.</h2><p>CEP, clima, CNPJ, Tabela FIPE, feriados, bancos, DDD, ISBN, câmbio, taxas e PIX usando serviços públicos acessíveis diretamente pelo navegador.</p></div></div></header>
 <nav class="tabs" aria-label="Tipos de consulta"><div class="wrap tabbar">
-<button class="tab" data-panel="cep" aria-selected="true">📍 CEP</button><button class="tab" data-panel="clima" aria-selected="false">☀️ Clima</button><button class="tab" data-panel="cnpj" aria-selected="false">🏢 CNPJ</button><button class="tab" data-panel="fipe" aria-selected="false">🚗 FIPE</button><button class="tab" data-panel="feriados" aria-selected="false">📅 Feriados</button><button class="tab" data-panel="bancos" aria-selected="false">🏦 Bancos</button>
+<button class="tab" data-panel="cep" aria-selected="true">📍 CEP</button><button class="tab" data-panel="clima" aria-selected="false">☀️ Clima</button><button class="tab" data-panel="cnpj" aria-selected="false">🏢 CNPJ</button><button class="tab" data-panel="fipe" aria-selected="false">🚗 FIPE</button><button class="tab" data-panel="feriados" aria-selected="false">📅 Feriados</button><button class="tab" data-panel="bancos" aria-selected="false">🏦 Bancos</button><button class="tab" data-panel="ddd" aria-selected="false">📞 DDD</button><button class="tab" data-panel="isbn" aria-selected="false">📚 ISBN</button><button class="tab" data-panel="cambio" aria-selected="false">💱 Câmbio</button><button class="tab" data-panel="taxas" aria-selected="false">📈 Taxas</button><button class="tab" data-panel="pix" aria-selected="false">⚡ PIX</button>
 </div></nav>
 <main class="wrap">
 <section id="cep" class="panel active"><div class="card"><div class="section-head"><div><h2>Consulta de CEP e endereço</h2><p>Pesquise um endereço pelo CEP ou encontre possíveis CEPs informando UF, cidade e logradouro.</p></div><span class="badge">ViaCEP</span></div>
@@ -34,6 +34,21 @@
 <section id="feriados" class="panel"><div class="card"><div class="section-head"><div><h2>Feriados nacionais</h2><p>Lista, calendário anual, dias restantes e possíveis emendas.</p></div><span class="badge">BrasilAPI</span></div><form id="feriados-form"><div class="form-grid"><div class="field full"><label for="ano-feriados">Ano</label><input id="ano-feriados" type="number" min="1900" max="2199" required></div></div><div class="actions"><button class="btn">Consultar feriados</button><button id="feriados-print" class="btn secondary" type="button" disabled>Imprimir</button><button id="feriados-csv" class="btn secondary" type="button" disabled>Exportar CSV</button><button id="feriados-ics" class="btn secondary" type="button" disabled>Exportar calendário</button></div><p id="feriados-status" class="status" role="status"></p></form><div id="feriados-result" class="result hidden"></div><p class="source">Fonte de integração: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>.</p></div></section>
 
 <section id="bancos" class="panel"><div class="card"><div class="section-head"><div><h2>Consulta de bancos</h2><p>Pesquise pelo código bancário ou pelo nome.</p></div><span class="badge">BrasilAPI</span></div><form id="bancos-form"><div class="form-grid"><div class="field full"><label for="banco-input">Código ou nome do banco</label><input id="banco-input" maxlength="80" placeholder="Ex.: 001 ou Banco do Brasil" required></div></div><div class="actions"><button class="btn">Consultar banco</button><button class="btn ghost" type="reset">Limpar</button></div><p id="bancos-status" class="status" role="status"></p></form><div id="bancos-result" class="result hidden"></div><p class="source">Fonte de integração: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>.</p></div></section>
+
+<!-- ===== ABA: DDD ===== -->
+<section id="ddd" class="panel"><div class="card"><div class="section-head"><div><h2>Consulta de DDD</h2><p>Informe o código de Discagem Direta à Distância para descobrir o estado e as cidades atendidas.</p></div><span class="badge">BrasilAPI</span></div><form id="ddd-form"><div class="form-grid"><div class="field full"><label for="ddd-input">DDD</label><input id="ddd-input" inputmode="numeric" maxlength="2" placeholder="Ex.: 11" required><small>Digite os dois dígitos do DDD (11 a 99).</small></div></div><div class="actions"><button class="btn">Consultar DDD</button><button class="btn ghost" type="reset">Limpar</button></div><p id="ddd-status" class="status" role="status"></p></form><div id="ddd-result" class="result hidden"></div><p class="source">Fonte: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>.</p></div></section>
+
+<!-- ===== ABA: ISBN ===== -->
+<section id="isbn" class="panel"><div class="card"><div class="section-head"><div><h2>Consulta de ISBN (livros)</h2><p>Pesquise metadados de um livro pelo ISBN-10 ou ISBN-13.</p></div><span class="badge">BrasilAPI</span></div><form id="isbn-form"><div class="form-grid"><div class="field full"><label for="isbn-input">ISBN</label><input id="isbn-input" maxlength="17" placeholder="Ex.: 9788532530802" required><small>Digite apenas números ou com hífens (10 ou 13 dígitos).</small></div></div><div class="actions"><button class="btn">Consultar ISBN</button><button class="btn ghost" type="reset">Limpar</button></div><p id="isbn-status" class="status" role="status"></p></form><div id="isbn-result" class="result hidden"></div><p class="source">Fonte de integração: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>.</p></div></section>
+
+<!-- ===== ABA: CÂMBIO ===== -->
+<section id="cambio" class="panel"><div class="card"><div class="section-head"><div><h2>Consulta de câmbio</h2><p>Cotação oficial de moedas estrangeiras em relação ao Real (PTAX/Banco Central).</p></div><span class="badge">BrasilAPI</span></div><form id="cambio-form"><div class="form-grid"><div class="field third"><label for="cambio-moeda">Moeda</label><select id="cambio-moeda" required><option value="">Carregando…</option></select></div><div class="field third"><label for="cambio-data">Data (opcional)</label><input id="cambio-data" type="date"><small>Por política de cache, a cotação de hoje não fica disponível. Deixe em branco para usar o último dia útil.</small></div></div><div class="actions"><button class="btn">Consultar cotação</button><button class="btn ghost" type="reset">Limpar</button></div><p id="cambio-status" class="status" role="status"></p></form><div id="cambio-result" class="result hidden"></div><p class="source">Fonte: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a> (dados do Banco Central).</p></div></section>
+
+<!-- ===== ABA: TAXAS ===== -->
+<section id="taxas" class="panel"><div class="card"><div class="section-head"><div><h2>Taxas econômicas</h2><p>Valores atuais da Selic, CDI e IPCA em % ao ano.</p></div><span class="badge">BrasilAPI</span></div><div class="actions"><button class="btn" id="taxas-carregar">Carregar taxas</button></div><p id="taxas-status" class="status" role="status"></p><div id="taxas-result" class="result hidden"></div><p class="source">Fonte: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a>.</p></div></section>
+
+<!-- ===== ABA: PIX ===== -->
+<section id="pix" class="panel"><div class="card"><div class="section-head"><div><h2>Participantes do PIX</h2><p>Instituições autorizadas a operar com PIX no Brasil.</p></div><span class="badge">BrasilAPI</span></div><div class="actions"><button class="btn" id="pix-carregar">Carregar participantes</button></div><p id="pix-status" class="status" role="status"></p><div id="pix-result" class="result hidden"></div><p class="source">Fonte: <a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a> (dados do Banco Central).</p></div></section>
 </main>
 <footer><div class="wrap">Central de consultas demonstrativa. A disponibilidade e a atualização dos dados dependem dos serviços externos utilizados.</div></footer>
 <script>
@@ -51,6 +66,7 @@ function weekday(s){return new Intl.DateTimeFormat("pt-BR",{weekday:"long",timeZ
 
 $$('.tab').forEach(b=>b.addEventListener('click',()=>{$$('.tab').forEach(x=>x.setAttribute('aria-selected','false'));$$('.panel').forEach(x=>x.classList.remove('active'));b.setAttribute('aria-selected','true');$(`#${b.dataset.panel}`).classList.add('active')}));
 
+/* ========== CEP ========== */
 const modoCep=$('#modo-cep'),modoEndereco=$('#modo-endereco'),buscaCep=$('#busca-por-cep'),buscaEndereco=$('#busca-por-endereco');
 function trocarModoCep(endereco=false){modoCep.classList.toggle('active',!endereco);modoEndereco.classList.toggle('active',endereco);modoCep.setAttribute('aria-selected',String(!endereco));modoEndereco.setAttribute('aria-selected',String(endereco));buscaCep.classList.toggle('hidden',endereco);buscaEndereco.classList.toggle('hidden',!endereco);hide('#cep-result');setStatus('#cep-status','');setStatus('#endereco-status','')}
 modoCep.addEventListener('click',()=>trocarModoCep(false));modoEndereco.addEventListener('click',()=>trocarModoCep(true));
@@ -60,15 +76,18 @@ $('#cep-form').addEventListener('reset',()=>{hide('#cep-result');setStatus('#cep
 $('#endereco-form').addEventListener('submit',async e=>{e.preventDefault();const uf=$('#endereco-uf').value,cidade=$('#endereco-cidade').value.trim(),logradouro=$('#endereco-logradouro').value.trim();hide('#cep-result');if(!uf)return setStatus('#endereco-status','Selecione a UF.',true);if(cidade.length<3||logradouro.length<3)return setStatus('#endereco-status','Cidade e logradouro devem ter pelo menos três caracteres.',true);setStatus('#endereco-status','Pesquisando endereços…');try{const d=await getJSON(`https://viacep.com.br/ws/${encodeURIComponent(uf)}/${encodeURIComponent(cidade)}/${encodeURIComponent(logradouro)}/json/`);if(!Array.isArray(d)||!d.length)throw new Error('Nenhum endereço encontrado. Tente usar menos palavras no logradouro.');const rows=d.map(x=>`<tr><td><strong>${esc(val(x.cep))}</strong></td><td>${esc(val(x.logradouro))}</td><td>${esc(val(x.complemento,'—'))}</td><td>${esc(val(x.bairro,'—'))}</td><td>${esc(val(x.localidade))} / ${esc(val(x.uf))}</td><td>${esc(val(x.ddd,'—'))}</td><td>${esc(val(x.ibge,'—'))}</td></tr>`).join('');show('#cep-result',`<h3>Endereços encontrados</h3><div class="table-wrap"><table><thead><tr><th>CEP</th><th>Logradouro</th><th>Complemento</th><th>Bairro</th><th>Cidade / UF</th><th>DDD</th><th>IBGE</th></tr></thead><tbody>${rows}</tbody></table></div>`);setStatus('#endereco-status',`${d.length} endereço(s) encontrado(s).`)}catch(err){setStatus('#endereco-status',err.message,true)}});
 $('#endereco-form').addEventListener('reset',()=>{hide('#cep-result');setStatus('#endereco-status','')});
 
+/* ========== CLIMA ========== */
 const weatherText=c=>({0:'Céu limpo',1:'Predominantemente limpo',2:'Parcialmente nublado',3:'Nublado',45:'Nevoeiro',48:'Nevoeiro com geada',51:'Garoa leve',53:'Garoa',55:'Garoa intensa',61:'Chuva leve',63:'Chuva',65:'Chuva forte',71:'Neve leve',73:'Neve',75:'Neve forte',80:'Pancadas leves',81:'Pancadas de chuva',82:'Pancadas fortes',95:'Trovoada',96:'Trovoada com granizo',99:'Trovoada forte'}[c]||`Condição ${c}`);
 $('#clima-form').addEventListener('submit',async e=>{e.preventDefault();const q=$('#cidade-input').value.trim();hide('#clima-result');if(q.length<2)return setStatus('#clima-status','Digite o nome de uma cidade.',true);setStatus('#clima-status','Localizando a cidade…');try{const geo=await getJSON(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=pt&countryCode=BR&format=json`);const p=geo.results?.[0];if(!p)throw new Error('Cidade não encontrada no Brasil.');setStatus('#clima-status','Obtendo a previsão…');const url=`https://api.open-meteo.com/v1/forecast?latitude=${p.latitude}&longitude=${p.longitude}&timezone=auto&forecast_days=7&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max`;
 const d=await getJSON(url),c=d.current,days=d.daily.time.map((date,i)=>`<div class="day"><strong>${esc(new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',timeZone:'UTC'}).format(new Date(date+'T12:00:00Z')))}</strong><span>${esc(weatherText(d.daily.weather_code[i]))}</span><span>Máx. ${d.daily.temperature_2m_max[i]} °C</span><span>Mín. ${d.daily.temperature_2m_min[i]} °C</span><span>Chuva ${val(d.daily.precipitation_probability_max[i],0)}%</span></div>`).join('');show('#clima-result',`<h3>${esc(p.name)}${p.admin1?` — ${esc(p.admin1)}`:''}</h3><div class="weather-now"><div class="data temp"><label>Temperatura atual</label><strong>${c.temperature_2m} °C</strong></div><div class="data"><label>Sensação térmica</label><strong>${c.apparent_temperature} °C</strong></div><div class="data"><label>Vento</label><strong>${c.wind_speed_10m} km/h</strong></div><div class="data"><label>Condição</label><strong>${esc(weatherText(c.weather_code))}</strong></div></div><div class="forecast">${days}</div>`);setStatus('#clima-status','Previsão atualizada.')}catch(err){setStatus('#clima-status',err.message,true)}});
 $('#clima-form').addEventListener('reset',()=>{hide('#clima-result');setStatus('#clima-status','')});
 
+/* ========== CNPJ ========== */
 $('#cnpj-input').addEventListener('input',e=>{let v=digits(e.target.value).slice(0,14);v=v.replace(/^(\d{2})(\d)/,'$1.$2').replace(/^(\d{2})\.(\d{3})(\d)/,'$1.$2.$3').replace(/\.(\d{3})(\d)/,'.$1/$2').replace(/(\d{4})(\d)/,'$1-$2');e.target.value=v});
 $('#cnpj-form').addEventListener('submit',async e=>{e.preventDefault();const n=digits($('#cnpj-input').value);hide('#cnpj-result');if(n.length!==14)return setStatus('#cnpj-status','Digite um CNPJ com 14 números.',true);setStatus('#cnpj-status','Consultando…');try{const d=await getJSON(`https://brasilapi.com.br/api/cnpj/v1/${n}`);const end=[d.logradouro,d.numero,d.complemento,d.bairro,d.municipio,d.uf,d.cep].filter(Boolean).join(', ');show('#cnpj-result',`<div class="result-grid"><div class="data wide"><label>Razão social</label><strong>${esc(val(d.razao_social))}</strong></div><div class="data"><label>Nome fantasia</label><strong>${esc(val(d.nome_fantasia))}</strong></div><div class="data"><label>Situação cadastral</label><strong>${esc(val(d.descricao_situacao_cadastral,d.situacao_cadastral))}</strong></div><div class="data"><label>Porte empresarial</label><strong>${esc(val(d.descricao_porte,d.porte))}</strong></div><div class="data wide"><label>Atividade principal</label><strong>${esc(val(d.cnae_fiscal_descricao,d.cnae_fiscal))}</strong></div><div class="data full"><label>Endereço</label><strong>${esc(val(end))}</strong></div></div>`);setStatus('#cnpj-status','CNPJ encontrado.')}catch(err){setStatus('#cnpj-status',err.message,true)}});
 $('#cnpj-form').addEventListener('reset',()=>{hide('#cnpj-result');setStatus('#cnpj-status','')});
 
+/* ========== FIPE ========== */
 const FIPE_TIPOS={cars:'Carro',motorcycles:'Moto',trucks:'Caminhão'};
 function normalizarFipe(v){return String(v||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim()}
 function historicoFipe(lista){if(!Array.isArray(lista)||!lista.length)return '<p class="source">Histórico não disponível para este resultado.</p>';return `<div class="price-history"><h5>Histórico de preços</h5><div class="price-history-list">${lista.map(x=>`<div class="price-history-item"><span>${esc(val(x.referenceMonth,x.month))}</span><strong>${esc(val(x.price,'—'))}</strong></div>`).join('')}</div></div>`}
@@ -95,6 +114,7 @@ $('#fipe-form').addEventListener('submit',async e=>{e.preventDefault();if(!tipo.
 
 $('#fipe-form').addEventListener('reset',()=>{setTimeout(()=>{resetSelect(marca,'Selecione o tipo');resetSelect(modelo,'Selecione a marca');resetSelect(ano,'Selecione o modelo');fipeBtn.disabled=true;fipeSelecao={marca:null,modelo:null,ano:null};hide('#fipe-result');setStatus('#fipe-status','')},0)});
 
+/* ========== FERIADOS ========== */
 let holidays=[];const yearInput=$('#ano-feriados');yearInput.value=new Date().getFullYear();
 function daysInfo(s){const target=new Date(`${s}T12:00:00`),today=new Date();today.setHours(0,0,0,0);target.setHours(0,0,0,0);const n=Math.round((target-today)/86400000);return n>0?`Faltam ${n} dia${n===1?'':'s'}`:n===0?'É hoje':`Passou há ${Math.abs(n)} dia${Math.abs(n)===1?'':'s'}`}
 function bridge(s){const day=new Date(`${s}T12:00:00Z`).getUTCDay();return day===1||day===5?'Fim de semana prolongado':day===2||day===4?'Possível emenda':day===0||day===6?'No fim de semana':''}
@@ -105,9 +125,113 @@ $('#feriados-print').onclick=()=>window.print();
 $('#feriados-csv').onclick=()=>{const lines=['Data;Nome;Dia da semana;Observação',...holidays.map(h=>[formatDateISO(h.date),h.name,weekday(h.date),bridge(h.date)].map(x=>`"${String(x).replace(/"/g,'""')}"`).join(';'))];download(`feriados-${yearInput.value}.csv`,'text/csv;charset=utf-8','\ufeff'+lines.join('\n'))};
 $('#feriados-ics').onclick=()=>{const ev=holidays.map(h=>`BEGIN:VEVENT\r\nDTSTART;VALUE=DATE:${h.date.replaceAll('-','')}\r\nDTEND;VALUE=DATE:${h.date.replaceAll('-','')}\r\nSUMMARY:${h.name.replace(/[;,]/g,' ')}\r\nEND:VEVENT`).join('\r\n');download(`feriados-${yearInput.value}.ics`,'text/calendar;charset=utf-8',`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Central Consultas//PT-BR\r\n${ev}\r\nEND:VCALENDAR`)};
 
+/* ========== BANCOS ========== */
 let banksCache=[];
 $('#bancos-form').addEventListener('submit',async e=>{e.preventDefault();const q=$('#banco-input').value.trim();hide('#bancos-result');if(!q)return;setStatus('#bancos-status','Consultando…');try{if(!banksCache.length)banksCache=await getJSON('https://brasilapi.com.br/api/banks/v1');const norm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();const found=digits(q)&&digits(q).length<=3?banksCache.filter(b=>String(b.code??'').padStart(3,'0')===digits(q).padStart(3,'0')):banksCache.filter(b=>norm(b.name).includes(norm(q))||norm(b.fullName).includes(norm(q)));if(!found.length)throw new Error('Banco não encontrado.');const rows=found.slice(0,20).map(b=>`<tr><td>${esc(val(b.code))}</td><td>${esc(val(b.name))}</td><td>${esc(val(b.fullName))}</td><td>${esc(val(b.ispb))}</td></tr>`).join('');show('#bancos-result',`<div class="table-wrap"><table><thead><tr><th>Código</th><th>Nome</th><th>Nome completo</th><th>ISPB</th></tr></thead><tbody>${rows}</tbody></table></div>`);setStatus('#bancos-status',`${found.length} resultado(s) encontrado(s).`)}catch(err){setStatus('#bancos-status',err.message,true)}});
 $('#bancos-form').addEventListener('reset',()=>{hide('#bancos-result');setStatus('#bancos-status','')});
+
+/* ========== DDD ========== */
+$('#ddd-input').addEventListener('input',e=>{e.target.value=digits(e.target.value).slice(0,2)});
+$('#ddd-form').addEventListener('submit',async e=>{e.preventDefault();const ddd=digits($('#ddd-input').value);hide('#ddd-result');if(ddd.length!==2||Number(ddd)<11)return setStatus('#ddd-status','Informe um DDD válido com dois dígitos (11 a 99).',true);setStatus('#ddd-status','Consultando…');try{const d=await getJSON(`https://brasilapi.com.br/api/ddd/v1/${ddd}`);const cidades=Array.isArray(d.cities)?d.cities:[];
+const lista=cidades.length?`<ul style="margin:8px 0 0;padding-left:20px;columns:2;column-gap:24px">${cidades.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>`:'<p class="empty">Nenhuma cidade listada para este DDD.</p>';
+show('#ddd-result',`<div class="result-grid"><div class="data"><label>DDD</label><strong>${esc(ddd)}</strong></div><div class="data"><label>Estado</label><strong>${esc(val(d.state))}</strong></div><div class="data wide"><label>Cidades atendidas (${cidades.length})</label>${lista}</div></div>`);setStatus('#ddd-status',`DDD ${ddd} — ${cidades.length} cidade(s) encontrada(s).`)}catch(err){setStatus('#ddd-status',err.message,true)}});
+$('#ddd-form').addEventListener('reset',()=>{hide('#ddd-result');setStatus('#ddd-status','')});
+
+/* ========== ISBN ========== */
+$('#isbn-form').addEventListener('submit',async e=>{e.preventDefault();const isbn=digits($('#isbn-input').value);hide('#isbn-result');if(isbn.length!==10&&isbn.length!==13)return setStatus('#isbn-status','Digite um ISBN-10 ou ISBN-13 válido (10 ou 13 números).',true);setStatus('#isbn-status','Consultando…');try{const d=await getJSON(`https://brasilapi.com.br/api/isbn/v1/${isbn}`);const capa=d.cover_url?`<div class="data full" style="text-align:center"><img src="${esc(d.cover_url)}" alt="Capa do livro" style="max-height:260px;border-radius:10px" loading="lazy" onerror="this.style.display='none'"></div>`:'';show('#isbn-result',`<div class="result-grid">${capa}<div class="data wide"><label>Título</label><strong>${esc(val(d.title))}${d.subtitle?` — ${esc(d.subtitle)}`:''}</strong></div><div class="data"><label>Autores</label><strong>${esc(Array.isArray(d.authors)?d.authors.join(', '):val(d.authors))}</strong></div><div class="data"><label>Editora</label><strong>${esc(val(d.publisher))}</strong></div><div class="data"><label>Ano</label><strong>${esc(val(d.year))}</strong></div><div class="data"><label>Idioma</label><strong>${esc(val(d.language))}</strong></div><div class="data"><label>Páginas</label><strong>${esc(val(d.page_count))}</strong></div><div class="data"><label>ISBN</label><strong>${esc(val(d.isbn))}</strong></div></div>`);setStatus('#isbn-status','Livro encontrado.')}catch(err){setStatus('#isbn-status',err.message,true)}});
+$('#isbn-form').addEventListener('reset',()=>{hide('#isbn-result');setStatus('#isbn-status','')});
+
+/* ========== CÂMBIO (corrigido) ========== */
+function localISO(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function ultimoDiaUtil(){const d=new Date();d.setDate(d.getDate()-1);while(d.getDay()===0||d.getDay()===6){d.setDate(d.getDate()-1)}return localISO(d)}
+function diaUtilAnterior(dataISO){const p=dataISO.split('-').map(Number);const d=new Date(p[0],p[1]-1,p[2]);d.setDate(d.getDate()-1);while(d.getDay()===0||d.getDay()===6){d.setDate(d.getDate()-1)}return localISO(d)}
+function isErroTemporal(msg){return /cache|hoje|pol[íi]tica|n[ãa]o h[áa]|n[ãa]o encontrad|data inv[áa]lida|sem cota|HTTP 404/i.test(String(msg||""))}
+
+let cambioMoedasCarregadas=false;
+async function carregarMoedasCambio(){
+  if(cambioMoedasCarregadas)return;
+  const sel=$('#cambio-moeda');
+  try{
+    const d=await getJSON('https://brasilapi.com.br/api/cambio/v1/moedas');
+    const moedas=Array.isArray(d)?d:d.moedas||[];
+    sel.innerHTML='<option value="">Selecione</option>';
+    moedas.forEach(m=>{
+      const sigla=typeof m==='string'?m:m.simbolo||m.code||m.moeda;
+      const nome=typeof m==='string'?m:m.nome||m.name||sigla;
+      if(!sigla)return;
+      const op=document.createElement('option');
+      op.value=sigla;op.textContent=`${sigla} — ${nome}`;
+      sel.appendChild(op);
+    });
+    cambioMoedasCarregadas=true;
+  }catch{
+    sel.innerHTML='<option value="">Não foi possível carregar</option>';
+  }
+}
+
+const cambioDataInput=$('#cambio-data');
+function preencherDataCambio(){
+  const ultimo=ultimoDiaUtil();
+  cambioDataInput.value=ultimo;
+  cambioDataInput.max=ultimo;
+}
+preencherDataCambio();
+
+$('#cambio-form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const moeda=$('#cambio-moeda').value;
+  let data=cambioDataInput.value||ultimoDiaUtil();
+  hide('#cambio-result');
+  if(!moeda)return setStatus('#cambio-status','Selecione uma moeda.',true);
+
+  const hoje=localISO(new Date());
+  if(data>=hoje){
+    data=ultimoDiaUtil();
+    cambioDataInput.value=data;
+    setStatus('#cambio-status','A cotação de hoje não fica disponível por política de cache. Usando o último dia útil: '+data+'.');
+  }else{
+    setStatus('#cambio-status','Consultando cotação…');
+  }
+
+  let tentativa=data,tentativas=0,d=null;
+  try{
+    while(tentativas<4){
+      try{
+        d=await getJSON(`https://brasilapi.com.br/api/cambio/v1/cotacao/${encodeURIComponent(moeda)}/${tentativa}`);
+        break;
+      }catch(err){
+        if(!isErroTemporal(err.message)||tentativas>=3)throw err;
+        tentativa=diaUtilAnterior(tentativa);
+        tentativas++;
+        setStatus('#cambio-status',`Sem cotação para a data informada. Tentando ${tentativa}…`);
+      }
+    }
+    if(!d)throw new Error('Não foi possível obter a cotação.');
+    if(tentativa!==data)cambioDataInput.value=tentativa;
+
+    const boletins=Array.isArray(d.cotacoes)?d.cotacoes:Array.isArray(d)?d:[d];
+    const rows=boletins.map(b=>`<tr><td>${esc(val(b.tipo_boletim,b.tipoBoletim))}</td><td>${esc(val(b.cotacao_compra,b.compra))}</td><td>${esc(val(b.cotacao_venda,b.venda))}</td><td>${esc(val(b.data_hora_cotacao,b.dataHoraCotacao))}</td></tr>`).join('');
+    show('#cambio-result',`<h3>${esc(moeda)} / BRL — referência ${esc(tentativa)}</h3><div class="table-wrap"><table><thead><tr><th>Boletim</th><th>Compra (R$)</th><th>Venda (R$)</th><th>Data/Hora</th></tr></thead><tbody>${rows}</tbody></table></div>`);
+    setStatus('#cambio-status',`Cotação de ${tentativa} carregada.`);
+  }catch(err){
+    setStatus('#cambio-status',err.message||'Falha ao consultar a cotação.',true);
+  }
+});
+
+$('#cambio-form').addEventListener('reset',()=>{
+  hide('#cambio-result');
+  setStatus('#cambio-status','');
+  $('#cambio-moeda').value='';
+  preencherDataCambio();
+});
+
+carregarMoedasCambio();
+
+/* ========== TAXAS ========== */
+$('#taxas-carregar').addEventListener('click',async()=>{const btn=$('#taxas-carregar');btn.disabled=true;hide('#taxas-result');setStatus('#taxas-status','Consultando taxas…');try{const d=await getJSON('https://brasilapi.com.br/api/taxas/v1');const lista=Array.isArray(d)?d:[];if(!lista.length)throw new Error('Nenhuma taxa disponível no momento.');const cards=lista.map(t=>`<div class="data"><label>${esc(val(t.nome,t.name))}</label><strong style="font-size:1.6rem;color:var(--green)">${esc(val(t.valor,t.value))}%</strong><small style="color:var(--muted)">ao ano</small></div>`).join('');show('#taxas-result',`<div class="result-grid">${cards}</div>`);setStatus('#taxas-status',`${lista.length} taxa(s) carregada(s).`)}catch(err){setStatus('#taxas-status',err.message,true)}finally{btn.disabled=false}});
+
+/* ========== PIX ========== */
+$('#pix-carregar').addEventListener('click',async()=>{const btn=$('#pix-carregar');btn.disabled=true;hide('#pix-result');setStatus('#pix-status','Carregando participantes…');try{const d=await getJSON('https://brasilapi.com.br/api/pix/v1/participants');const lista=Array.isArray(d)?d:[];if(!lista.length)throw new Error('Nenhum participante retornado.');const rows=lista.map(p=>`<tr><td>${esc(val(p.ispb))}</td><td>${esc(val(p.nome,p.name))}</td><td>${esc(val(p.nome_reduzido,p.nomeReduzido))}</td><td>${esc(val(p.modalidade_participacao,p.modalidadeParticipacao))}</td><td>${esc(val(p.tipo_participacao,p.tipoParticipacao))}</td></tr>`).join('');show('#pix-result',`<h3>${lista.length} participante(s)</h3><div class="table-wrap"><table><thead><tr><th>ISPB</th><th>Nome</th><th>Nome reduzido</th><th>Modalidade</th><th>Tipo</th></tr></thead><tbody>${rows}</tbody></table></div>`);setStatus('#pix-status',`${lista.length} participante(s) carregado(s).`)}catch(err){setStatus('#pix-status',err.message,true)}finally{btn.disabled=false}});
 </script>
 </body>
 </html>
